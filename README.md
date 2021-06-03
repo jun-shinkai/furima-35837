@@ -27,7 +27,6 @@
 | Column                   | Type     | Options     |
 | ------------------------ | -------- | ----------- |
 | item-category  _id          | integer  | null: false |
-| brand                       | string   | null: false |
 | item-name                   | string   | null: false |
 | item-info                   | text     | null: false |
 | item-sales-status_id        | integer  | null: false |
@@ -59,9 +58,9 @@
 
 | Column          | Type     | Options     |
 | --------------- | -------- | ----------- |
-| Postal code     | string   | null: false |
+| postal code     | string   | null: false |
 | prefecture_id      | integer  | null: false |
-| Municipality    | string   | null: false |
+| municipality    | string   | null: false |
 | address         | string   | null: false |
 | building        | string   |
 | phone number    | string   | null: false |
