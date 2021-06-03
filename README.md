@@ -6,12 +6,13 @@
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
-| email              | string | null: false |
+| email              | string | null: false,unique: true |
 | encrypted_password | string | null: false |
 | last-name          | string | null: false |
 | first-name         | string | null: false |
 | last-name-kana     | string | null: false |
 | first-name-kana    | string | null: false |
+| user_birth_date    |　date | null: false |
 
 ### Association
 
@@ -25,17 +26,16 @@
 
 | Column                   | Type     | Options     |
 | ------------------------ | -------- | ----------- |
-| item-category            | string   | null: false |
-| brand                    | string   | null: false |
-| item-name                | string   | null: false |
-| item-info                | string   | null: false |
-| item-image               | string   | null: false |
-| item-sales-status        | string   | null: false |
-| item-shipping-fee-status | string   | null: false |
-| item-prefecture          | string   | null: false |
-| item-scheduled-delivery  | string   | null: false |
-| item-price               | string   | null: false |
-| user_id                  |references| foreign_key: true |
+| item-category  _id          | integer  | null: false |
+| brand                       | string   | null: false |
+| item-name                   | string   | null: false |
+| item-info                   | text     | null: false |
+| item-sales-status_id        | integer  | null: false |
+| item-shipping-fee-status_id | integer  | null: false |
+| item-prefecture_id          | integer  | null: false |
+| item-scheduled-delivery_id  | integer  | null: false |
+| item-price                  | integer  | null: false |
+| user                        |references| foreign_key: true |
 
 ### Association
 
@@ -46,8 +46,8 @@
 
 | Column    | Type       | Options           |
 | --------- | ---------- | ------------------|
-| user_id   | references | foreign_key: true |
-| items_id  | references | foreign_key: true |
+| user      | references | foreign_key: true |
+| items     | references | foreign_key: true |
 
 ### Association
 
@@ -60,12 +60,12 @@
 | Column          | Type     | Options     |
 | --------------- | -------- | ----------- |
 | Postal code     | string   | null: false |
-| prefecture      | string   | null: false |
+| prefecture_id      | integer  | null: false |
 | Municipality    | string   | null: false |
 | address         | string   | null: false |
-| building        | string   | null: false |
+| building        | string   |
 | phone number    | string   | null: false |
-| order_id        |references| foreign_key: true |
+| order           |references| foreign_key: true |
 
 ### Association
 
