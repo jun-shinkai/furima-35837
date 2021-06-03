@@ -31,7 +31,7 @@
 | item-info                   | text     | null: false |
 | item-sales-status_id        | integer  | null: false |
 | item-shipping-fee-status_id | integer  | null: false |
-| item-prefecture_id          | integer  | null: false |
+| prefecture_id          | integer  | null: false |
 | item-scheduled-delivery_id  | integer  | null: false |
 | item-price                  | integer  | null: false |
 | user                        |references| foreign_key: true |
