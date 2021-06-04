@@ -69,3 +69,18 @@
 ### Association
 
 - belongs_to :order
+
+
+model migrate
+   
+   t.category_id             :integer,  null:false
+      t.sales_status_id         :integer,  null:false
+      t.shipping_fee_status_id  :integer,  null:false
+      t.prefecture_id           :integer,  null:false
+      t.scheduled_delivery_id   :integer,  null:false
+      t.name                    :string,   null:false
+      t.info                    :text  ,   null:false
+      t.price                   :integer,  null:false
+      t.references                   :user, foreign_key:true
+      t.timestamps
+    end
