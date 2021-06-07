@@ -75,6 +75,11 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include "Price must be less than 10000000"
     end
+    it 'price が半角数字以外だと登録できない' do
+      @item.price    ='fwrfw'
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Price is not a number"
+    end
      it 'category_id が0だと登録できない' do
        @item.category_id     = 0
        @item.valid?

@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!,  only: [:new, :creast]
+  before_action :authenticate_user!,  only: [:new, :create]
   
   def index
    # @item = Item.includes(:user).order("created_at DESC")
