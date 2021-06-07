@@ -21,10 +21,11 @@ class Item < ApplicationRecord
       validates :scheduled_delivery_id    
     end
     validates :name                  
-    validates :info                            
+    validates :info                     
+    validates :image
+       
     validates :price ,format: {with: VALID_PRICEL_HALF},length: {minimum: 3, maxinum: 7},numericality: { only_integer: true,
       greater_than: 300, less_than: 10000000
-      }
-    validates :image                       
+      }                     
   end
 end
