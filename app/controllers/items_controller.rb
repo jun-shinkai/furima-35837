@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   
   
   def index
-    #@items = Items.includes(:user).order("created_at DESC")
+    @items = Items.order("created_at DESC")
   end
 
   def new
@@ -10,9 +10,16 @@ class ItemsController < ApplicationController
   end
 
   def create
-     @item = Item.create(item_params)
+    @item = Item.new(item_params)
+    if 
+       @article.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 end
+
 
 
 private
