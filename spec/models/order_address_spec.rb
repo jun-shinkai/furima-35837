@@ -92,7 +92,7 @@ RSpec.describe OrderAddress, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include "Item can't be blank"
       end
-      it 'tokuがからでは投稿できない' do
+      it 'tokunが空では投稿できない' do
         @order.token = nil
         @order.valid?
         expect(@order.errors.full_messages).to include "Token can't be blank"
