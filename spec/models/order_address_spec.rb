@@ -36,8 +36,14 @@ RSpec.describe OrderAddress, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include "Prefecture can't be blank"
       end
+      it 'prefecture_idが0だと登録できない' do
+        @order.prefecture_id = 0
+        @order.valid?
+        expect(@order.errors.full_messages).to include "Prefecture can't be blank"
+      end
+
       it 'municipalityが空だと登録できない' do
-        @order.municipality = ""
+        @order.municipality = ''
         @order.valid?
         expect(@order.errors.full_messages).to include "Municipality can't be blank"
       end
@@ -58,6 +64,21 @@ RSpec.describe OrderAddress, type: :model do
       end
       it 'phone_numberが12桁以上だと登録できない' do
         @order.phone_number = '000000000000'
+        @order.valid?
+        expect(@order.errors.full_messages).to include "Phone number is invalid"
+      end
+      it 'phone_numberが英数混合だと登録できない' do
+        @order.phone_number = 'aaaaa0000000'
+        @order.valid?
+        expect(@order.errors.full_messages).to include "Phone number is invalid"
+      end
+      it 'phone_numberが数字のみでないと登録できない' do
+        @order.phone_number = '123-4567-0000'
+        @order.valid?
+        expect(@order.errors.full_messages).to include "Phone number is invalid"
+      end
+      it 'phone_numberが全角数字だと登録できない' do
+        @order.phone_number = '０００００００００００'
         @order.valid?
         expect(@order.errors.full_messages).to include "Phone number is invalid"
       end
