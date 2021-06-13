@@ -4,7 +4,7 @@ RSpec.describe OrderAddress, type: :model do
   before do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:item)
-    @order = FactoryBot.build(:order_address,user_id: @user.id, item_id: @item.id)
+    @order = FactoryBot.build(:order_address, user_id: @user.id, item_id: @item.id)
     sleep 0.1
   end
 
@@ -26,9 +26,9 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order.errors.full_messages).to include "Postal code can't be blank"
       end
       it 'postal_codeは「3桁ハイフン4桁」の半角文字列以外だと登録できない' do
-        @order.postal_code = "3333333"
+        @order.postal_code = '3333333'
         @order.valid?
-        expect(@order.errors.full_messages).to include "Postal code is invalid"
+        expect(@order.errors.full_messages).to include 'Postal code is invalid'
       end
 
       it 'prefecture_idが空では登録できない' do
@@ -60,27 +60,27 @@ RSpec.describe OrderAddress, type: :model do
       it 'phone_numberが9桁以下だと登録できない' do
         @order.phone_number = '000000000'
         @order.valid?
-        expect(@order.errors.full_messages).to include "Phone number is invalid"
+        expect(@order.errors.full_messages).to include 'Phone number is invalid'
       end
       it 'phone_numberが12桁以上だと登録できない' do
         @order.phone_number = '000000000000'
         @order.valid?
-        expect(@order.errors.full_messages).to include "Phone number is invalid"
+        expect(@order.errors.full_messages).to include 'Phone number is invalid'
       end
       it 'phone_numberが英数混合だと登録できない' do
         @order.phone_number = 'aaaaa0000000'
         @order.valid?
-        expect(@order.errors.full_messages).to include "Phone number is invalid"
+        expect(@order.errors.full_messages).to include 'Phone number is invalid'
       end
       it 'phone_numberが数字のみでないと登録できない' do
         @order.phone_number = '123-4567-0000'
         @order.valid?
-        expect(@order.errors.full_messages).to include "Phone number is invalid"
+        expect(@order.errors.full_messages).to include 'Phone number is invalid'
       end
       it 'phone_numberが全角数字だと登録できない' do
         @order.phone_number = '０００００００００００'
         @order.valid?
-        expect(@order.errors.full_messages).to include "Phone number is invalid"
+        expect(@order.errors.full_messages).to include 'Phone number is invalid'
       end
       it 'ユーザーが紐付いていなければ投稿できない' do
         @order.user_id = nil
