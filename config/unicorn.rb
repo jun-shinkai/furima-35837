@@ -11,7 +11,6 @@ working_directory app_path
 pid "#{app_path}/tmp/pids/unicorn.pid"
 
 #ポート番号を指定
-listen 3000
 
 #エラーのログを記録するファイルを指定
 stderr_path "#{app_path}/log/unicorn.stderr.log"
@@ -53,3 +52,5 @@ end
 after_fork do |_server, _worker|
   defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
 end
+
+listen "#{app_path}/tmp/sockets/unicorn.sock"
