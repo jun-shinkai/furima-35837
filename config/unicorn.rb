@@ -53,5 +53,3 @@ end
 after_fork do |_server, _worker|
   defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
 end
-#エラーのログを記録するファイルを指定
-stderr_path "#{app_path}/log/unicorn.stderr.log"
