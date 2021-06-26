@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_one :order
-  has_one_attached :image
+  has_many_attached :images
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
@@ -21,7 +21,7 @@ class Item < ApplicationRecord
     end
     validates :name
     validates :info
-    validates :image
+    validates :images
 
     validates :price, format: { with: VALID_PRICEL_HALF }, length: { minimum: 3, maxinum: 7 }, numericality: { only_integer: true,
                                                                                                                greater_than: 299, less_than: 10_000_000 }
