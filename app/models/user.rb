@@ -7,12 +7,12 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :birth_date
     validates :nickname
-    with_options format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'is invalid. Input full-width characters.' } do
+    with_options format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'は日本語で記入してください' } do
       validates :last_name
       validates :first_name
     end
 
-    with_options format: { with: /\A[ァ-ヶー]+\z/, message: 'is invalid. Input full-width katakana characters.' } do
+    with_options format: { with: /\A[ァ-ヶー]+\z/, message: 'は日本語(カナ)で記入してください' } do
       validates :last_name_kana
       validates :first_name_kana
     end
