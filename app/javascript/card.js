@@ -1,24 +1,24 @@
 const pay = () => {
   Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
- const form = document.getElementById("charge-form");
+ const form = document.getElementById("charge-orm");
  form.addEventListener("submit",(e) => {
    e.preventDefault();
 
- const formResult = document.getElementById("charge-form");
+ const formResult = document.getElementById("charge-orm");
  const formData   = new FormData(formResult);
 
  const card = {
-  number: formData.get("order_address[number]"),
-  cvc: formData.get("order_address[cvc]"),
-  exp_month: formData.get("order_address[exp_month]"),
-  exp_year: `20${formData.get("order_address[exp_year]")}`,
+  number: formData.get("number"),
+  cvc: formData.get("cvc"),
+  exp_month: formData.get("exp_month"),
+  exp_year: `20${formData.get("exp_year")}`,
    };
 
    Payjp.createToken(card, (status, response) => {
     if (status == 200){
       const token = response.id;
-      const renderDom = document.getElementById("charge-form")
-      const tokenObj = `<input value=${token} type="hidden" name = 'token'>`;
+      const renderDom = document.getElementById("charge-orm")
+      const tokenObj = `<input value=${token} type="hidden" name = 'card_token'>`;
       renderDom.insertAdjacentHTML("beforeend",tokenObj);
     }
 
@@ -27,8 +27,7 @@ const pay = () => {
     document.getElementById("card-exp-year").removeAttribute("name")
     document.getElementById("card-cvc").removeAttribute("name")
 
-    document.getElementById("charge-form").submit();
-    document.getElementById("charge-form").reset();
+     document.getElementById("charge-orm").submit();
    })
  })
 }
