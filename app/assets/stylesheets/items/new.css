@@ -231,3 +231,20 @@
 .inc {
   font-size: 13px;
 }
+
+.input-tag{
+  padding-left: 10px;
+}
+
+.child{
+  border-bottom:#666 1px solid;
+  margin: 10px 0;
+  padding-left: 11px;
+}
+
+.tag-field{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
