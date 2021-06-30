@@ -50,7 +50,6 @@ class ItemsController < ApplicationController
   end
 
    def tag_search
-    binding.pry
    @results = @p.result  # 検索条件にマッチした商品の情報を取得
    end
 

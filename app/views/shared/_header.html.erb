@@ -2,14 +2,16 @@
 <header class='top-page-header'>
   <div class='search-bar-contents'>
     <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
-   
-    <%= search_form_for @p,url:tag_search_items_path,class:"search-form" do |f|%>
+    
+    <% if @item.blank? %>
+    <%= search_form_for @p, url:tag_search_items_path,class:"search-form" do |f|%>
      <div class='input-box'> 商品名</div>
     <%= f.collection_select :name_eq, @item_name, :name, :name, include_blank: '指定なし' ,class:'input-box' %>
    
     <%= f.button type: 'submit', class:"search-button" do %>
         <%= image_tag "search.png", class:"search-icon" %>
       <% end %>  
+   <% end %>
    <% end %>
   </div>
   <div class='nav'>
